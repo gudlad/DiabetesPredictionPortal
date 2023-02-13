@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspection Page</title>
+
+    <style>
+      body {
+        background: url("{% static 'images/bi.jpg' %}") center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      .main {
+        position: fixed;
+        top: 80px;
+        left: 565px;
+        width: 550px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        align-items: center;
+        padding: 5%;
+      }
+      h1 {
+        color: #0086b3;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      input[type="submit"],
+      .btn {
+        background-color: #4dc3ff;
+        border: 2px;
+        color: white;
+        padding: 8px 16px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- navbarstart -->
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        background-color: antiquewhite;
+      "
+    >
+      <p
+        style="
+          text-transform: uppercase;
+          font-weight: bolder;
+          text-shadow: 4px 4px lightsteelblue;
+          color: brown;
+          margin-left: 20px;
+        "
+      >
+        Welcome to the prediction page
+      </p>
+      <p>
+        <a
+          style="
+            margin-left: 60rem;
+            margin-right:20px;
+            text-transform: uppercase;
+            font-weight: bolder;
+            text-decoration: none;
+          "
+          href="index"
+          >Home</a
+        >
+      </p>
+      <hr style="margin:0px; padding: 0px;">
+      <p style="margin: 10px 10px">
+        Patient Name : <strong>{{user.username}}</strong>
+      </p>
+    </div>
+    <hr />
+    <!-- navbarend -->
+    <div align="center" class="main">
+      <h1>Please enter the following information:</h1>
+      <form action="inspection" method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td align="right">Pregnancies:</td>
+            <td align="left"><input type="text" name="n1" /></td>
+          </tr>
+          <tr>
+            <td align="right">Glucose:</td>
+            <td align="left"><input type="text" name="n2" /></td>
+          </tr>
+          <tr>
+            <td align="right">Blood Pressure:</td>
+            <td align="left"><input type="text" name="n3" /></td>
+          </tr>
+          <tr>
+            <td align="right">Skin Thickness:</td>
+            <td align="left"><input type="text" name="n4" /></td>
+          </tr>
+          <tr>
+            <td align="right">Insulin:</td>
+            <td align="left"><input type="text" name="n5" /></td>
+          </tr>
+          <tr>
+            <td align="right">BMI:</td>
+            <td align="left"><input type="text" name="n6" /></td>
+          </tr>
+          <tr>
+            <td align="right">Diabetes Pedigree function:</td>
+            <td align="left"><input type="text" name="n7" /></td>
+          </tr>
+          <tr>
+            <td align="right">Age:</td>
+            <td align="left"><input type="text" name="n8" /></td>
+          </tr>
+        </table>
+        <input type="submit" value="submit" />
+        <a
+          class="btn"
+          href="email"
+          style="text-decoration: none; font-size: small"
+          >view results</a
+        >
+      </form>
+      <!-- <div style="padding-top: 10px">Result:{{result2}}</div> -->
+      <div style="color:red">{% for message in messages %} {{message}} {% endfor %}</div>
+    </div>
+  </body>
+</html>

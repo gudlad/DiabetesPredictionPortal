@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Diabetes Detection Portal</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
+
+    <!-- Favicon
+    <link rel="shortcut icon" type="image/jpg" href="{% static ''%}"/> -->
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+   
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <style>
+      .hero-header {
+        background-image: url('{% static "images/hero.jpg" %}');
+      }
+    </style>
+  </head>
+ 
+  <body>
+    <!-- Topbar Start -->
+    <div class="container-fluid py-2 border-bottom d-none d-lg-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+            <div class="d-inline-flex align-items-center">
+              <a class="text-decoration-none text-body pe-3" href=""
+                ><i class="bi bi-telephone me-2"></i>+012 345 6789</a
+              >
+              <span class="text-body">|</span>
+              <a class="text-decoration-none text-body px-3" href=""
+                ><i class="bi bi-envelope me-2"></i>info@example.com</a
+              >
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white shadow-sm">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+          <a href="index" class="navbar-brand">
+            <h1 class="m-0 text-uppercase text-primary">
+              <i class="fa fa-clinic-medical me-2"></i>Diabetes Detection Portal
+            </h1>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+              <a href="index" class="nav-item nav-link active">Home</a>
+              {% if user.is_authenticated %}
+              <a href="logout" class="nav-item nav-link">logout</a>
+              <a href="" class="text-uppercase ms-lg-5 mt-auto mb-auto fw-bold text-danger">Hello, {{user.username}}</a>
+              {% else %}
+              <a href="register" class="nav-item nav-link">Register</a>
+              <a href="login" class="nav-item nav-link">Login</a>
+              {% endif %}
+
+          </div>
+        </nav>
+      </div>
+    </div> 
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary py-5 mb-0 hero-header bg-image">
+      <div class="container py-5">
+        <div class="row justify-content-start">
+          <div class="col-md-8 text-sm-start text-lg-start text-lg-start">
+            <h5
+              class="d-inline-block text-white text-uppercase border-bottom border-5"
+              style="border-color: rgba(256, 256, 256, 0.3) !important"
+            >
+              Welcome To Diabetes Detection Portal
+            </h5>
+            <h1 class="display-1 text-warning mb-md-4">
+              Find out whether you have Diabetes using
+              ML
+            </h1>
+
+            <div class="pt-2">
+              <a href="inspection" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2"
+              >Start Inspection</a
+              >
+            </div>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- About Start -->
+    <div class="container-fluid py-5">
+      <div class="container">
+         <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5 display-5"
+              >
+                How It Works
+              </h5>
+        <div class="row gx-5" align="center">
+          <div class="col-lg-12  mb-lg-0 pt-5 align-content-end" style="min-height: 400px">
+            <div>
+              <img
+                class=" rounded ps-5 "
+                src="{% static 'images/diabetes.png' %}"
+                style="object-fit: cover"
+              />
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+    </div>
+ <!-- About End -->
+     <!-- Footer Start -->
+    <div
+      class="container-fluid bg-dark text-light border-top border-secondary py-4 "
+    >
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-md-6 text-center text-md-center">
+            <p class="mb-md-0">
+              &copy;
+              <a class="text-primary" href="#">Diabetes Detection Portal</a>.
+              All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>

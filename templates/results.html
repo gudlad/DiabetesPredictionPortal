@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      
+      .d {
+        background-color: antiquewhite;
+      }
+      .p {
+      margin-left:50%;
+      }
+    </style>
+  </head>
+  <body>
+     <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        background-color: antiquewhite;
+        padding-top:20px;
+      "
+    >
+      <div
+        style="
+          text-transform: uppercase;
+          font-weight: bolder;
+          font-size: large;
+          text-shadow: 4px 4px lightsteelblue;
+          color: brown;
+          margin-left: 20px;
+        "
+      >
+        Welcome to the Result page
+      </div>
+      <p class="p">
+        <a class='btn btn-dark' href="index">Home</a>
+        <a class='btn btn-dark' href="logout">logout</a>
+        <a class='btn btn-dark' href="inspection">back</a>
+      </p>
+      <hr style="margin:0px; padding: 0px;">
+      <p style="margin-right: 20px">
+        Patient Name : <strong>{{user.username}}</strong>
+      </p>
+    </div>
+    <hr />
+    <!-- navbarend -->
+    {% if data %}
+    <h2><u class="text-dark">Based on the details given:</u></h2></div>
+    <div style="margin: 5% 10%">
+      {% for patient in data %}
+      <table class="table table-bordered border-primary">
+        <tr class="bg-info">
+          <td>Patient Name :</td>
+          <td>{{user.first_name}} {{user.last_name}}</td>
+        </tr>
+        <tbody>
+          <tr class="d">
+            <td colspan="2">Details</td>
+          </tr>
+          <tr class="d">
+            <td>Pregnancies</td>
+            <td>{{patient.Pregnancies}}</td>
+          </tr>
+          <tr class="d">
+            <td>Glucose</td>
+            <td>{{patient.GLucose}}</td>
+          </tr>
+          <tr class="d">
+            <td>Blood Pressure</td>
+            <td>{{patient.Blood_Pressure}}</td>
+          </tr>
+          <tr class="d">
+            <td>Skin Thickness</td>
+            <td>{{patient.Skin_Thickness}}</td>
+          </tr>
+          <tr class="d">
+            <td>Insulin</td>
+            <td>{{patient.Insulin}}</td>
+          </tr>
+          <tr class="d">
+            <td>BMI</td>
+            <td>{{patient.BMI}}</td>
+          </tr>
+            <tr class="d">
+            <td>BMI</td>
+            <td>{{patient.DPF}}</td>
+          </tr>
+          <tr class="d">
+            <td>Age</td>
+            <td>{{patient.Age}}</td>
+          </tr>
+          <tr class="fw-bolder">
+            <td>Result</td>
+            <td class="text-danger active">{{patient.Result}}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+       {% else %}
+       <div style="text-align:center;">
+        <div class="display-5 text-primary">
+          No Data 404
+        </div>
+       </div>
+       {% endif %}
+    </div>
+  </body>
+</html>
