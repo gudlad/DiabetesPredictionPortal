@@ -3,12 +3,12 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.core.mail import send_mail
 from .models import patient_data
+from django.contrib.auth.decorators import login_required
 
 # machine learning libraries
 import  pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def index(request):
