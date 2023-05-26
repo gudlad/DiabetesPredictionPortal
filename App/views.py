@@ -10,7 +10,7 @@ import  pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def index(request):
     return render(request,"index.html")
 

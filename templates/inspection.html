@@ -14,11 +14,10 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
- 
+
       } 
 
       .main {
-  
         position: fixed;
         background-color: yellow;
         top: 80px;
@@ -27,21 +26,34 @@
         border-radius: 10px;
         align-items: center;
         padding: 5%;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
       }
+
       h1 {
         color: #0086b3;
-        font-size: 30px;
-        font-weight: bold;
+        text-shadow: 1px 1px lightsteelblue;
+        text-align: center;
       }
       input[type="submit"],
+
       .btn {
-        background-color: #4dc3ff;
-        border: 2px;
+        background-color: #0086b3;
+        border: none;
         color: white;
-        padding: 8px 16px;
+        padding: 10px 20px;
+        text-decoration: none;
+        margin: 4px 2px;
         cursor: pointer;
-        margin-top: 15px;
+        border-radius: 5px;
       }
+
+      input[type="text"]{
+        border: 1px solid #0086b3;
+        padding: 2px;
+        width: 70%;
+        font-size: 15px;
+      }
+
     </style>
   </head>
 
@@ -61,6 +73,7 @@
           text-shadow: 4px 4px lightsteelblue;
           color: brown;
           margin-left: 20px;
+          font-size: 20px;
         "
       >
         Welcome to the prediction page
@@ -123,15 +136,17 @@
             <td align="left"><input type="text" name="n8" /></td>
           </tr>
         </table>
-        <input type="submit" value="submit" />
+
+        <input class="btn" type="submit" value="submit" />
         <a
           class="btn"
           href="email"
           style="text-decoration: none; font-size: small"
           >view results</a
         >
+        
       </form>
-      <!-- <div style="padding-top: 10px">Result:{{result2}}</div> -->
+
       <div style="color:red">{% for message in messages %} {{message}} {% endfor %}</div>
     </div>
   </body>

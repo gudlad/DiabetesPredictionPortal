@@ -15,10 +15,10 @@
           style="
           text-transform: uppercase;
           font-weight: bolder;
-          font-size: large;
           text-shadow: 4px 4px lightsteelblue;
           color: brown;
           margin-left: 20px;
+          font-size: 22px;
         "
   >
     Welcome to the Result page
@@ -33,19 +33,17 @@
     Patient Name : <strong>{{user.username}}</strong>
   </p>
 </div >
-
-<hr />
 <!-- navbarend -->
 
 
 {% if data %}
-<h2><u class="text-dark">Based on the details given:</u></h2></div>
-<div style="margin: 5% 10%">
+<h2  class="mt-3"><u class="text-dark">Based on the details given:</u></h2>
+<div style="margin: 2% 10%">
   {% for patient in data %}
   <table class="table table-bordered border-primary">
     <tr class="bg-info">
-      <td>Patient Name :</td>
-      <td>{{user.first_name}} {{user.last_name}}</td>
+      <td class="text-center fw-bold">Patient Name :</td>
+      <td class="text-center fw-bold">{{user.first_name}} {{user.last_name}}</td>
     </tr>
     <tbody>
     <tr class="d">
@@ -117,7 +115,7 @@
     <style>
       
       .d {
-        background-color: antiquewhite;
+        background-color: lightyellow;
       }
       .p {
       margin-left:50%;

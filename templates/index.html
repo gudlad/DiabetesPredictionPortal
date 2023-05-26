@@ -39,6 +39,10 @@
       .hero-header {
         background-image: url('{% static "images/hero.jpg" %}');
       }
+      .userlogo{
+        width: 50px;
+        height: 50px;
+      }
     </style>
   </head>
  
@@ -85,14 +89,17 @@
             <div class="navbar-nav ms-auto py-0">
               <a href="index" class="nav-item nav-link active">Home</a>
               {% if user.is_authenticated %}
-              <a href="logout" class="nav-item nav-link">logout</a>
-              <a href="" class="text-uppercase ms-lg-5 mt-auto mb-auto fw-bold text-danger">Hello, {{user.username}}</a>
+                <a href="logout" class="nav-item nav-link">Logout</a>
+                <div class="d-flex align-items-center">
+                  <a href="#" class="text-uppercase ms-lg-5 mt-auto mb-auto fw-bold text-danger">Hello, {{ user.username }}</a>
+                  <img class="userlogo ms-2" src="{% static 'images/user_icon.svg' %}" alt="User Icon">
+                </div>
               {% else %}
-              <a href="register" class="nav-item nav-link">Register</a>
-              <a href="login" class="nav-item nav-link">Login</a>
+                <a href="register" class="nav-item nav-link">Register</a>
+                <a href="login" class="nav-item nav-link">Login</a>
               {% endif %}
-
             </div>
+            
           </div>
         </nav>
       </div>
@@ -114,20 +121,26 @@
               Find out whether you have Diabetes using
               ML
             </h1>
-
+            {% if user.is_authenticated %}
             <div class="pt-2">
-              <a href="inspection" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2"
+              <a href="inspection" class="btn btn-light active rounded-pill py-md-3 px-md-5 mx-2"
               >Start Inspection</a
               >
             </div>
-       
+            {% else %}
+            <div class="pt-2">
+              <a href="inspection" class="btn btn-light disabled rounded-pill py-md-3 px-md-5 mx-2"
+              >Start Inspection</a
+              >
+            </div>
+            {% endif %}
           </div>
         </div>
       </div>
     </div>
 
    <!-- About Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5 translate-translate-middle-x">
       <div class="container">
          <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5 display-5"
               >
