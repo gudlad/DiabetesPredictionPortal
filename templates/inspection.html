@@ -7,15 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inspection Page</title>
 
-
     <style>
-       body {
+      body {
         background: url('{% static "images/bi.jpg" %}') center;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-
-      } 
+      }
 
       .main {
         position: fixed;
@@ -35,19 +33,22 @@
         text-align: center;
       }
       input[type="submit"],
-
       .btn {
         background-color: #0086b3;
         border: none;
+        font-style: Times New Roman;
+        font-weight: bold;
+        font-size: 15px;
         color: white;
         padding: 10px 20px;
         text-decoration: none;
         margin: 4px 2px;
+        margin-top: 10px;
         cursor: pointer;
         border-radius: 5px;
       }
 
-      input[type="text"]{
+      input[type="text"] {
         border: 1px solid #0086b3;
         padding: 2px;
         width: 70%;
@@ -82,7 +83,7 @@
         <a
           style="
             margin-left: 60rem;
-            margin-right:20px;
+            margin-right: 20px;
             text-transform: uppercase;
             font-weight: bolder;
             text-decoration: none;
@@ -91,7 +92,7 @@
           >Home</a
         >
       </p>
-      <hr style="margin:0px; padding: 0px;">
+      <hr style="margin: 0px; padding: 0px" />
       <p style="margin: 10px 10px">
         Patient Name : <strong>{{user.username}}</strong>
       </p>
@@ -104,50 +105,94 @@
         {% csrf_token %}
         <table>
           <tr>
-            <td align="right">Pregnancies:</td>
-            <td align="left"><input type="text" name="n1" /></td>
+            <td align="right">Glucose:</td>
+            <td align="left">
+              <input
+                type="text"
+                name="n2"
+                title="Enter the glucose level (mg/dL). Minimum: 0, Maximum: 500"
+              />
+            </td>
           </tr>
           <tr>
-            <td align="right">Glucose:</td>
-            <td align="left"><input type="text" name="n2" /></td>
+            <td align="right">Pregnancies:</td>
+            <td align="left">
+              <input
+                type="text"
+                name="n1"
+                title="Enter the number of pregnancies (0 if male)"
+              />
+            </td>
           </tr>
           <tr>
             <td align="right">Blood Pressure:</td>
-            <td align="left"><input type="text" name="n3" /></td>
+            <td align="left">
+              <input
+                type="text"
+                name="n3"
+                title="Enter the blood pressure (mmHg). Minimum: 60, Maximum: 200"
+              />
+            </td>
           </tr>
           <tr>
             <td align="right">Skin Thickness:</td>
-            <td align="left"><input type="text" name="n4" /></td>
+            <td align="left">
+              <input
+                type="text"
+                name="n4"
+                title="Enter the skin thickness (mm). Minimum: 5, Maximum: 50"
+              />
+            </td>
           </tr>
           <tr>
             <td align="right">Insulin:</td>
-            <td align="left"><input type="text" name="n5" /></td>
+            <td align="left">
+              <input
+                type="text"
+                name="n5"
+                title="Enter the insulin level (mu U/ml). Minimum: 0, Maximum: 500"
+              />
+            </td>
           </tr>
           <tr>
             <td align="right">BMI:</td>
-            <td align="left"><input type="text" name="n6" /></td>
+            <td align="left">
+              <input
+                type="text"
+                name="n6"
+                title="Enter the body mass index (BMI). Minimum: 10, Maximum: 70"
+              />
+            </td>
           </tr>
           <tr>
             <td align="right">Diabetes Pedigree function:</td>
-            <td align="left"><input type="text" name="n7" /></td>
+            <td align="left">
+              <input
+                type="text"
+                name="n7"
+                title="Enter the diabetes pedigree function. Minimum: 0, Maximum: 2"
+              />
+            </td>
           </tr>
           <tr>
             <td align="right">Age:</td>
-            <td align="left"><input type="text" name="n8" /></td>
+            <td align="left">
+              <input
+                type="text"
+                name="n8"
+                title="Enter your age. Minimum: 1, Maximum: 120"
+              />
+            </td>
           </tr>
         </table>
 
-        <input class="btn" type="submit" value="submit" />
-        <a
-          class="btn"
-          href="email"
-          style="text-decoration: none; font-size: small"
-          >view results</a
-        >
-        
+        <input id="submitbutton" style="align:center"class="btn" type="submit" value="submit" />
+        <a class="btn" href="result">view results 👉</a>
       </form>
 
-      <div style="color:red">{% for message in messages %} {{message}} {% endfor %}</div>
+      <div style="color: red">
+        {% for message in messages %} {{message}} {% endfor %}
+      </div>
     </div>
   </body>
 </html>

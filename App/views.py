@@ -105,11 +105,11 @@ def inspection(request):
         return render(request,'inspection.html')
 
 
-   
+
 ## display data of prediction
-def email(request):
+def result(request):
     user=request.user
-    data=patient_data.objects.filter(user=user)
+    data = patient_data.objects.filter(user=user).order_by('-id')[:5]
     print(data)
     return render(request,'results.html',{'data':data})
 
