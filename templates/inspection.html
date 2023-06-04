@@ -16,16 +16,26 @@
       }
 
       .main {
-        position: fixed;
+        position: absolute;
         background-color: yellow;
         top: 80px;
-        left: 565px;
-        width: 550px;
+        left: 50%; 
+        transform: translateX(-50%); 
+        max-width: 550px;
+        width: 90%;
         border-radius: 10px;
         align-items: center;
         padding: 5%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
       }
+      
+      @media screen and (max-width:2000px) {
+        .main {
+          top: 20%;
+          padding: 3%;
+        }
+      }
+      
 
       h1 {
         color: #0086b3;
@@ -58,7 +68,7 @@
     </style>
   </head>
 
-  <body>
+  <body class="img-fluid">
     <!-- navbarstart -->
     <div
       style="
@@ -99,7 +109,7 @@
     </div>
     <hr />
     <!-- navbarend -->
-    <div align="center" class="main">
+    <div align="center" class="main" >
       <h1>Please enter the following information:</h1>
       <form action="inspection" method="POST">
         {% csrf_token %}
