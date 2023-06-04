@@ -19,8 +19,8 @@
         position: absolute;
         background-color: yellow;
         top: 80px;
-        left: 50%; 
-        transform: translateX(-50%); 
+        left: 50%;
+        transform: translateX(-50%);
         max-width: 550px;
         width: 90%;
         border-radius: 10px;
@@ -28,14 +28,13 @@
         padding: 5%;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
       }
-      
-      @media screen and (max-width:2000px) {
+
+      @media screen and (max-width: 2000px) {
         .main {
           top: 20%;
           padding: 3%;
         }
       }
-      
 
       h1 {
         color: #0086b3;
@@ -64,52 +63,63 @@
         width: 70%;
         font-size: 15px;
       }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: antiquewhite;
+        padding: 20px 20px;
+      }
 
+      .navbar-title {
+        text-transform: uppercase;
+        font-weight: bolder;
+        text-shadow: 4px 4px lightsteelblue;
+        color: brown;
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .navbar-link {
+        margin: 0;
+      }
+
+      .navbar-link a {
+        text-transform: uppercase;
+        font-weight: bolder;
+        text-decoration: none;
+      }
+
+      .navbar-patient {
+        margin: 0;
+      }
+
+      @media screen and (max-width: 600px) {
+        .navbar {
+          flex-direction: column;
+        }
+
+        .navbar-link {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
     </style>
   </head>
 
   <body class="img-fluid">
     <!-- navbarstart -->
-    <div
-      style="
-        display: flex;
-        justify-content: space-between;
-        background-color: antiquewhite;
-      "
-    >
-      <p
-        style="
-          text-transform: uppercase;
-          font-weight: bolder;
-          text-shadow: 4px 4px lightsteelblue;
-          color: brown;
-          margin-left: 20px;
-          font-size: 20px;
-        "
-      >
-        Welcome to the prediction page
-      </p>
-      <p>
-        <a
-          style="
-            margin-left: 60rem;
-            margin-right: 20px;
-            text-transform: uppercase;
-            font-weight: bolder;
-            text-decoration: none;
-          "
-          href="index"
-          >Home</a
-        >
-      </p>
-      <hr style="margin: 0px; padding: 0px" />
-      <p style="margin: 10px 10px">
-        Patient Name : <strong>{{user.username}}</strong>
+    <div class="navbar">
+      <p class="navbar-title">Welcome to the prediction page</p>
+      <p class="navbar-link"><a href="index">Home</a></p>
+      <p class="navbar-patient">
+        Patient Name: <strong>{{user.username}}</strong>
       </p>
     </div>
     <hr />
     <!-- navbarend -->
-    <div align="center" class="main" >
+
+    <div align="center" class="main">
       <h1>Please enter the following information:</h1>
       <form action="inspection" method="POST">
         {% csrf_token %}
@@ -196,7 +206,13 @@
           </tr>
         </table>
 
-        <input id="submitbutton" style="align:center"class="btn" type="submit" value="submit" />
+        <input
+          id="submitbutton"
+          style="align: center"
+          class="btn"
+          type="submit"
+          value="submit"
+        />
         <a class="btn" href="result">view results 👉</a>
       </form>
 
