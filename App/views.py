@@ -7,8 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 
 import  pandas as pd
-# from sklearn.model_selection import train_test_split
-# from sklearn.linear_model import LogisticRegression
 import joblib
 
 # @login_required(login_url='login')
