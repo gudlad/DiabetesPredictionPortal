@@ -5,10 +5,11 @@ from django.core.mail import send_mail
 from .models import patient_data
 from django.contrib.auth.decorators import login_required
 
-# machine learning libraries
+
 import  pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+# from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LogisticRegression
+import joblib
 
 # @login_required(login_url='login')
 def index(request):
@@ -61,13 +62,7 @@ def logout(request):
 
 def inspection(request):
     if request.method=='POST':
-        data= pd.read_csv(r"C:\Users\Dell\django_workspace\Diabetes_Prediction\static\diabetes.csv")
-        X = data.drop("Outcome",axis=1)
-        Y=data['Outcome']
-        X_train,X_test,Y_train,Y_test= train_test_split(X,Y,test_size=0.2)
-        model = LogisticRegression()
-        model.fit(X_train,Y_train)
-        ####################################################################
+        loaded_model = joblib.load(r"C:\Users\Dell\django_workspace\Diabetes_Prediction\logistic_regression_model.sav")
         val1=float(request.POST['n1'])
         val2=float(request.POST['n2'])
         val3=float(request.POST['n3'])
@@ -76,19 +71,17 @@ def inspection(request):
         val6=float(request.POST['n6'])
         val7=float(request.POST['n7'])
         val8=float(request.POST['n8'])
-        #####################################################################
-        pred=model.predict([[val1,val2,val3,val4,val5,val6,val7,val8]])
-        result1=""
+        input_data = pd.DataFrame([[val1,val2,val3,val4,val5,val6,val7,val8]], columns=['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'])
+        pred=loaded_model.predict(input_data)[0]
         print(pred)
-        if pred==[1]:
+        result1=""
+        if pred==1:
             result1="Positive"
         else:
             result1="Negative"
         userid=request.user
-        print(userid)
         patient=patient_data.objects.create(Pregnancies=val1,GLucose=val2,Blood_Pressure=val3,Skin_Thickness=val4,Insulin=val5,BMI=val6,DPF=val7,Age=val8,Result=result1,user_id=userid.id)
         patient.save()
-        
         # mailing
         getemail=list(User.objects.filter(id=request.user.id).values_list('email'))[0][0]
         send_mail(
@@ -110,6 +103,5 @@ def inspection(request):
 def result(request):
     user=request.user
     data = patient_data.objects.filter(user=user).order_by('-id')[:5]
-    print(data)
     return render(request,'results.html',{'data':data})
 
